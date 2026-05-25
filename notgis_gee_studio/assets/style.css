@@ -1,0 +1,607 @@
+/* ==========================================
+   notGIS GEE Studio — Global CSS
+   ==========================================
+   Professional desktop-like GIS interface.
+   ArcGIS Pro / Google Earth Engine Code Editor uslubida.
+   ========================================== */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --bg: #090909;
+    --surface: #111111;
+    --surface2: #161616;
+    --surface3: #1c1c1c;
+    --border: #1e1e1e;
+    --border2: #2a2a2a;
+    --primary: #F5C518;
+    --primary-d: #c9a010;
+    --primary-g: rgba(245,197,24,0.08);
+    --text: #e8e8e8;
+    --text2: #888888;
+    --text3: #444444;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --blue: #60a5fa;
+    --navbar-h: 52px;
+    --status-h: 28px;
+    --left-w: 280px;
+    --right-w: 300px;
+    --panel-gap: 1px;
+    --radius: 6px;
+    --radius-sm: 4px;
+}
+
+/* ===== GLOBAL RESET ===== */
+.stApp {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.stApp > header {
+    display: none;
+}
+
+#MainMenu, footer, .stDeployButton {
+    display: none;
+}
+
+.block-container {
+    padding: 0 0.5rem 0 0.5rem;
+    max-width: 100%;
+}
+
+/* ===== FONTS ===== */
+.stApp, .stMarkdown, .stText, p, span, div, label, input, select, textarea, button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+}
+
+code, pre, .stCode {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 11px;
+}
+
+/* ===== NAVBAR ===== */
+.notgis-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--navbar-h);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.navbar-subtitle {
+    font-size: 12px;
+    color: var(--text2);
+    font-weight: 400;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-status {
+    font-size: 12px;
+    color: var(--text2);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-crs {
+    font-size: 10px;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--surface2);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.navbar-separator {
+    color: var(--border2);
+    font-size: 10px;
+}
+
+/* ===== STATUS BAR ===== */
+.notgis-statusbar {
+    display: flex;
+    align-items: center;
+    height: var(--status-h);
+    background: #0a0a0a;
+    border-top: 1px solid var(--border);
+    padding: 0 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    overflow: hidden;
+}
+
+.log-ticker {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.log-ticker-inner {
+    display: inline-block;
+    animation: ticker-scroll 40s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(50%); }
+    100% { transform: translateX(-100%); }
+}
+
+.status-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.status-count {
+    color: var(--text3);
+    font-size: 10px;
+}
+
+.status-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.status-badge-error {
+    background: var(--red);
+    color: white;
+}
+
+/* ===== PANELS ===== */
+section[data-testid="stSidebar"] {
+    display: none;
+}
+
+/* ===== COMPACT INPUTS ===== */
+.stTextInput input,
+.stSelectbox select,
+.stDateInput input,
+.stNumberInput input {
+    height: 28px;
+    min-height: 28px;
+    font-size: 12px;
+    background-color: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 2px 8px;
+}
+
+.stTextInput input:focus,
+.stSelectbox select:focus,
+.stNumberInput input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary-g);
+}
+
+div[data-baseweb="select"] {
+    font-size: 12px;
+}
+
+div[data-baseweb="select"] > div {
+    min-height: 28px;
+    background-color: var(--surface2);
+    border-color: var(--border);
+}
+
+div[data-baseweb="input"] > div {
+    min-height: 28px;
+    background-color: var(--surface2);
+}
+
+/* ===== BUTTONS ===== */
+.stButton > button {
+    height: 28px;
+    min-height: 28px;
+    padding: 0 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    transition: all 0.15s ease;
+    letter-spacing: 0.3px;
+}
+
+.stButton > button:hover {
+    background: var(--surface3);
+    border-color: var(--border2);
+}
+
+.stButton > button[kind="primary"],
+.stButton > button[data-testid="stBaseButton-primary"] {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    background: var(--primary-d);
+}
+
+.stButton > button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* ===== EXPANDER / ACCORDION ===== */
+.streamlit-expanderHeader {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    background: var(--surface2);
+    border: none;
+    border-left: 2px solid transparent;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    background: var(--surface3);
+    color: var(--text2);
+}
+
+details[open] > summary.streamlit-expanderHeader {
+    border-left-color: var(--primary);
+    color: var(--text);
+}
+
+.streamlit-expanderContent {
+    background: var(--surface);
+    border: none;
+    border-left: 2px solid var(--border);
+    padding: 8px 12px;
+}
+
+/* ===== SLIDER ===== */
+.stSlider > div > div {
+    padding-top: 0;
+}
+
+.stSlider [data-baseweb="slider"] [role="slider"] {
+    width: 14px;
+    height: 14px;
+    background-color: var(--primary);
+    border: 2px solid var(--primary-d);
+}
+
+.stSlider [data-baseweb="slider"] div[data-testid="stThumbValue"] {
+    font-size: 10px;
+    color: var(--text2);
+}
+
+/* ===== CHECKBOX ===== */
+.stCheckbox {
+    margin-bottom: 0;
+}
+
+.stCheckbox label {
+    font-size: 11px;
+    color: var(--text);
+    padding: 2px 0;
+}
+
+.stCheckbox label span[data-testid="stCheckboxLabel"] {
+    font-size: 11px;
+}
+
+/* ===== RADIO ===== */
+.stRadio > div {
+    gap: 4px;
+}
+
+.stRadio label {
+    font-size: 11px;
+    padding: 2px 8px;
+}
+
+/* ===== TABS ===== */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    padding: 6px 12px;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--text2);
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.stTabs [data-baseweb="tab-panel"] {
+    padding: 8px 0;
+}
+
+/* ===== DATA TABLE ===== */
+.stDataFrame {
+    font-size: 11px;
+}
+
+.stDataFrame thead th {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    background: var(--surface2);
+}
+
+/* ===== DOWNLOAD BUTTON ===== */
+.stDownloadButton > button {
+    height: 24px;
+    min-height: 24px;
+    font-size: 10px;
+    padding: 0 8px;
+}
+
+/* ===== FILE UPLOADER ===== */
+.stFileUploader {
+    font-size: 11px;
+}
+
+.stFileUploader section {
+    padding: 8px;
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+    background: var(--surface2);
+}
+
+/* ===== CHAT ===== */
+.chat-msg {
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: var(--radius);
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: 95%;
+}
+
+.chat-msg.user {
+    background: var(--primary-g);
+    border-left: 2px solid var(--primary);
+    color: var(--text);
+}
+
+.chat-msg.assistant {
+    background: var(--surface2);
+    border-left: 2px solid var(--blue);
+    color: var(--text);
+}
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 9px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 4px 0;
+}
+
+.stat-range {
+    font-size: 9px;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== CONNECTION STATUS ===== */
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.connection-status.connected {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.2);
+    color: var(--green);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.green {
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.conn-method {
+    font-size: 9px;
+    color: var(--text3);
+    margin-left: auto;
+}
+
+/* ===== MAP INFO BAR ===== */
+.map-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    margin-top: 4px;
+}
+
+/* ===== PLACEHOLDER ===== */
+.placeholder-box {
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+    margin: 8px 0;
+}
+
+/* ===== CAPTIONS & LABELS ===== */
+.stCaption, .stMarkdown small {
+    font-size: 10px;
+    color: var(--text3);
+}
+
+/* ===== ALERTS ===== */
+.stAlert {
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+}
+
+/* ===== SPINNER ===== */
+.stSpinner > div {
+    border-color: var(--primary);
+    border-right-color: transparent;
+}
+
+/* ===== DIVIDER ===== */
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 8px 0;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text3);
+}
+
+/* ===== TEXT AREA ===== */
+.stTextArea textarea {
+    font-size: 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+}
+
+.stTextArea textarea:focus {
+    border-color: var(--primary);
+}
+
+/* ===== CHAT INPUT ===== */
+.stChatInput {
+    border-color: var(--border);
+}
+
+.stChatInput textarea {
+    font-size: 12px;
+}
+
+/* ===== PLOTLY OVERRIDES ===== */
+.js-plotly-plot {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* ===== COLUMN GAPS ===== */
+div[data-testid="stHorizontalBlock"] {
+    gap: 4px;
+}
+
+/* ===== DATE INPUT ===== */
+div[data-baseweb="calendar"] {
+    font-size: 11px;
+}
+
+/* ===== SELECT (DROPDOWN) ===== */
+div[data-baseweb="popover"] {
+    font-size: 12px;
+}
+
+div[data-baseweb="menu"] li {
+    font-size: 12px;
+    padding: 4px 12px;
+}
